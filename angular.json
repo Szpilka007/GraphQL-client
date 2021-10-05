@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "graphql-client"
+    }
+  },
+  "defaultProject": "graphql-client",
+  "cli": {
+    "analytics": false
+  }
 }

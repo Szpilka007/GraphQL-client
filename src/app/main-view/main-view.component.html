@@ -1,0 +1,57 @@
+<div class="container">
+    <h1 class="m-5">Foods</h1>
+    <div class="m-5">
+        <button class="btn btn-primary" (click)="showAdd = !showAdd">
+            Dodaj jedzenie
+        </button>
+        <button class="btn btn-danger ml-5" (click)="showDelete = !showDelete">
+            Usuń jedzenie
+        </button>
+        <button class="btn btn-secondary ml-5" (click)="showEdit = !showEdit">
+            Aktualizuj jedzenie
+        </button>
+    </div>
+    <div class="m-5">
+        <div *ngIf="showDelete" class="form-group d-flex">
+            <input class="form-control w-75" placeholder="Wpisz numer jedzenia do usunięcia" [(ngModel)]="deleteFoodId">
+            <button class=" btn btn-danger ml-3" (click)="deleteFoodById()">Usuń</button>
+        </div>
+        <div *ngIf="showAdd" class="form-group d-flex">
+            <input class="form-control w-75 m-2" placeholder="Wpisz nazwę jedzenia" [(ngModel)]="name">
+            <input class="form-control w-75 m-2" placeholder="Wpisz firmę jedzenia jedzenia" [(ngModel)]="company">
+            <input class="form-control w-75 m-2" placeholder="Wpisz cene jedzenia" [(ngModel)]="price">
+            <input class="form-control w-75 m-2" placeholder="Wpisz ilość jedzenia" [(ngModel)]="amount">
+            <button class=" btn btn-primary ml-3" (click)="addNewFood()">Dodaj</button>
+        </div>
+        <div *ngIf="showEdit" class="form-group d-flex">
+            <input class="form-control w-75 m-2" placeholder="Wpisz index jedzenia" [(ngModel)]="foodId">
+            <input class="form-control w-75 m-2" placeholder="Wpisz nazwę jedzenia" [(ngModel)]="name">
+            <input class="form-control w-75 m-2" placeholder="Wpisz firmę jedzenia jedzenia" [(ngModel)]="company">
+            <input class="form-control w-75 m-2" placeholder="Wpisz cene jedzenia" [(ngModel)]="price">
+            <input class="form-control w-75 m-2" placeholder="Wpisz ilość jedzenia" [(ngModel)]="amount">
+            <button class=" btn btn-primary ml-3" (click)="editFood()">Edytuj</button>
+        </div>
+    </div>
+    <div *ngIf="foods">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">company</th>
+                <th scope="col">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let food of foods; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ food.name }}</td>
+                <td>{{food.price}}</td>
+                <td>{{food.company}}</td>
+                <td>{{food.amount}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
